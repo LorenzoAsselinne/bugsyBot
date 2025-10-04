@@ -49,7 +49,7 @@ module.exports = {
         await message.channel.send(
           `${message.author}, ton message a été supprimé car il contenait un mot interdit: "${forbiddenWordFound}".\n` +
           `C'est vraiment pas poli de dire "${forbiddenWordFound}".\n` +
-          `Donc à l'avenir évite de dire "${forbiddenWordFound}".\n` +
+          `Personne n'a envie de lire le mot "${forbiddenWordFound}".\n` +
           `${forbiddenWordFound} toi même !`
         );
       } catch (error) {

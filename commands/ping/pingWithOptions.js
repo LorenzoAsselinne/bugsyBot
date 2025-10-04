@@ -16,7 +16,7 @@ module.exports = {
         )),
 
   async execute(interaction) {
-    const input = interaction.options.getString('input');
-    await interaction.reply(`${input}`);
+    const input = interaction.options?.getString('input');
+    await interaction.reply(`${input ? input : 'tu as oublié de répondre'}`);
   }
 }
