@@ -1,3 +1,5 @@
+const wait = require('node:timers/promises').setTimeout;
+
 module.exports = {
   name: 'messageCreate',
   async execute(message) {
@@ -49,8 +51,13 @@ module.exports = {
         await message.channel.send(
           `${message.author}, ton message a été supprimé car il contenait un mot interdit: "${forbiddenWordFound}".\n` +
           `C'est vraiment pas poli de dire "${forbiddenWordFound}".\n` +
-          `Personne n'a envie de lire le mot "${forbiddenWordFound}".\n` +
+          `Personne n'à envie de lire le mot "${forbiddenWordFound}".\n` +
           `${forbiddenWordFound} toi même !`
+        );
+        await wait(3_000);
+        await message.channel.send(`Nan j'déconne, on dit ce qu'on veut :\n` +
+          `\n` +
+          `${message.author} à dit :  ${message.content}`
         );
       } catch (error) {
         console.error('Erreur lors de la suppression du message:', error);
