@@ -3,7 +3,6 @@ const wait = require('node:timers/promises').setTimeout;
 module.exports = {
   name: 'messageCreate',
   async execute(message) {
-    console.log('🔎 ➡️ - censor.js:4 - execute - message:', message);
     if (message.author.bot) return;
 
     const forbiddenWord = [
