@@ -25,7 +25,10 @@ async function queryApertus(prompt) {
     return response.data.choices[0].message.content;
   } catch (error) {
     console.error("Erreur API PublicAI:", error.response?.data || error.message);
-    throw error;
+
+    // Retourne le vrai message d'erreur de l'API avec tag pour notifier
+    const errorMessage = error.response?.data?.error?.message || error.message || "Erreur inconnue";
+    return `<@195489818623344642> : ${errorMessage}`;
   }
 }
 
