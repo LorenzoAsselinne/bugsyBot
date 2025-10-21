@@ -3,7 +3,8 @@ require('dotenv').config();
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, MessageFlags } = require('discord.js');
-const botToken = process.env.DISCORD_TOKEN
+const botToken = process.env.DISCORD_TOKEN;
+const supabase = require('./supabase');
 
 // Create a new client instance
 const client = new Client({
@@ -13,6 +14,16 @@ const client = new Client({
     GatewayIntentBits.MessageContent
   ]
 });
+
+// Test de connexion Supabase
+(async () => {
+  const { data, error } = await supabase.from('llm_conv_context').select('*').limit(1);
+  if (error && error.code !== 'PGRST116') {
+    console.error('❌ Erreur de connexion Supabase:', error);
+  } else {
+    console.log('✅ Connexion Supabase réussie !');
+  }
+})();
 
 // When the client is ready, run this code (only once).
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.

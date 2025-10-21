@@ -12,9 +12,9 @@ module.exports = {
 
     try {
       const channel = await client.channels.fetch(GENERAL_CHANNEL_ID);
-      if (channel) {
+      /* if (channel) {
         await channel.send('🤖 Bugsy est de retour ! Prêt à répondre à vos questions (ou à râler un peu).');
-      }
+      } */
     } catch (error) {
       console.error('Erreur lors de l\'envoi du message de démarrage:', error);
     }
